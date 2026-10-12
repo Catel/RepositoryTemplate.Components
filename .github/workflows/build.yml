@@ -285,21 +285,8 @@ jobs:
           IsCiBuild: ${{ env.Deploy != 'true' }}
 
           # Specific
-          AzureCodeSignCertificateName: ${{ env.AzureCodeSignCertificateName }}
-          AzureCodeSignClientId: ${{ env.AzureCodeSignClientId }}
-          AzureCodeSignClientSecret: ${{ env.AzureCodeSignClientSecret }}
-          AzureCodeSignTenantId: ${{ env.AzureCodeSignTenantId }}
-          AzureCodeSignVaultName: ${{ env.AzureCodeSignVaultName }}
-          NuGetPackageSources: ${{ env.NuGetPackageSources }}
-          NuGetPackageSourcesNames: ${{ env.NuGetPackageSourcesNames }}
-          NuGetPackageSourcesTokens: ${{ env.NuGetPackageSourcesTokens }}
-          NuGetPackageSourcesUsernames: ${{ env.NuGetPackageSourcesUsernames }}
-          NuGetRepositoryUrl: ${{ env.NuGetRepositoryUrl }}
           NuGetRepositoryApiKey: ${{ steps.nuget-login.outputs.NUGET_API_KEY }}
-          SonarOrganization: ${{ env.SonarOrganization }}
           SonarProject: ${{ github.repository_owner }}_${{ github.event.repository.name }}
-          SonarToken: ${{ env.SonarToken }}
-          SonarUrl: ${{ env.SonarUrl }}
         run: |
           $deploy = $env:Deploy -eq 'true'
           $target = if ($deploy) { 'BuildAndDeploy' } else { 'BuildAndTest' }
